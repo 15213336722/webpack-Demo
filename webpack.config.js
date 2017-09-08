@@ -12,7 +12,13 @@ module.exports = {
         historyApiFallback:true,
         port:'3003'
     },
-    // plugin:[
-    //     new HtmlWebpackPlugin()
-    // ],
+    plugins:[
+        new HtmlWebpackPlugin({
+            title:'webpack脚手架测试',
+            template: __dirname+'/app/index/template/index.html',
+            filename: __dirname+'/build/template/index.html',
+            showErrors: true,
+            inject: 'body',
+        })
+    ]
 };

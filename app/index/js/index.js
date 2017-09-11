@@ -1,2 +1,2 @@
 document.write('Hello World!aaaddd');
-require('../../index/css/aaa.css');
+require('../../index/css/index.less');

@@ -1,6 +1,7 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
 var glob = require('glob');
+var _ = require('lodash');
 
 var getEntry = function () {
     var entry = {};
@@ -14,6 +15,27 @@ var getEntry = function () {
     return entry;
 }
 
+var getPlugins = function () {
+    var htmlObject = {};
+    var arr = [];
+    glob.sync('./app/**/template/*.html').forEach(function (name) {;
+        var start = name.indexOf('template/')+9;
+        var end = name.length-5;
+        var n = name.slice(start,end);
+        htmlObject[n] = name
+    });
+    _.forEach(htmlObject,function (n,key) {
+        var obj = new HtmlWebpackPlugin({
+            template: path.join(__dirname,n),
+            filename: path.join(__dirname,'build/'+key+'.html'),
+            chunks:[key]
+        });
+        arr.push(obj);
+    });
+    return arr;
+}
+
+getPlugins();
 
 
 module.exports = {
@@ -28,14 +50,5 @@ module.exports = {
         historyApiFallback:true,
         port:'3003'
     },
-    plugins:[
-        new HtmlWebpackPlugin({
-            title:'webpack脚手架测试',
-            template: __dirname+'/app/index.html',
-            filename: path.join(__dirname,'build/[name].html'),
-            showErrors: true,
-            inject: 'body',
-        })
-    ]
-
+    plugins:getPlugins()
 };

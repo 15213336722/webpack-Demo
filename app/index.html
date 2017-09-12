@@ -4,7 +4,20 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
-<a href="./login.html">登录页</a>
+<body ng-app="myApp">
+<input type="text" ng-model="name">
+<div ng-controller="myCtrl">
+    <span ng-bind="name"></span>
+
+    <div>
+
+        <ul>
+            <li ng-repeat="item in arr">
+                <span ng-bind="item"></span>
+            </li>
+        </ul>
+    </div>
+</div>
+
 </body>
 </html>

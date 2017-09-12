@@ -38,7 +38,7 @@ var getPlugins = function () {
         template: path.join(__dirname,'/app/index.html'),
         filename: path.join(__dirname,'build/index.html'),
         chunks:['index'],
-        hash:true
+        // hash:true
     });
     arr.push(index);
     return arr;
@@ -55,7 +55,8 @@ module.exports = {
         contentBase:'./build',
         inline:true,
         historyApiFallback:true,
-        port:'3003'
+        port:'3003',
+        hot:true,
     },
     plugins:getPlugins(),
     module:{

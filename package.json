@@ -11,6 +11,7 @@
   "author": "Liebling",
   "license": "ISC",
   "devDependencies": {
+    "angular": "^1.6.6",
     "css-loader": "^0.28.7",
     "html-webpack-plugin": "^2.30.1",
     "less": "^2.7.2",
